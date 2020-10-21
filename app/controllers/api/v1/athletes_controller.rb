@@ -1,7 +1,9 @@
 class Api::V1::AthletesController < ApplicationController
 
     def index
-        athletes = Athlete.all
+        athletes = Athlete.select{
+            |athlete| athlete.user_id == current_user.id
+        }
         render json: athletes
     end
 
