@@ -1,5 +1,6 @@
 class Api::V1::AthletesController < ApplicationController
 
+    #Only render the athletes of the current user
     def index
         athletes = Athlete.select{
             |athlete| athlete.user_id == current_user.id
